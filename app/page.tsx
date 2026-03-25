@@ -198,16 +198,16 @@ export default function Dashboard() {
 
   // Theme classes
   const isDark = options.theme === "dark"
-  const bgMain = isDark ? "bg-zinc-950" : "bg-gray-50"
-  const bgHeader = isDark ? "bg-zinc-900" : "bg-white"
-  const bgSidebar = isDark ? "bg-zinc-900" : "bg-gray-100"
-  const bgCard = isDark ? "bg-zinc-800" : "bg-white"
-  const bgCardHover = isDark ? "hover:bg-zinc-700" : "hover:bg-gray-50"
-  const textPrimary = isDark ? "text-white" : "text-gray-900"
-  const textSecondary = isDark ? "text-zinc-400" : "text-gray-600"
-  const textMuted = isDark ? "text-zinc-500" : "text-gray-500"
-  const borderColor = isDark ? "border-zinc-700" : "border-gray-200"
-  const inputBg = isDark ? "bg-zinc-800" : "bg-white"
+  const bgMain = isDark ? "bg-slate-950" : "bg-slate-50"
+  const bgHeader = isDark ? "bg-slate-900" : "bg-white"
+  const bgSidebar = isDark ? "bg-slate-900" : "bg-slate-100"
+  const bgCard = isDark ? "bg-slate-800" : "bg-white"
+  const bgCardHover = isDark ? "hover:bg-slate-700" : "hover:bg-slate-50"
+  const textPrimary = isDark ? "text-slate-100" : "text-slate-900"
+  const textSecondary = isDark ? "text-slate-400" : "text-slate-600"
+  const textMuted = isDark ? "text-slate-500" : "text-slate-500"
+  const borderColor = isDark ? "border-slate-700" : "border-slate-200"
+  const inputBg = isDark ? "bg-slate-800" : "bg-white"
 
   // High contrast adjustments
   const contrastBorder = options.highContrast
@@ -266,8 +266,8 @@ export default function Dashboard() {
             <Keyboard className="w-4 h-4" />
           </button>
         </div>
-        <h1 className={`${headingFontClass} font-bold underline underline-offset-4 ${contrastText}`}>
-          Dashboard
+        <h1 className={`${headingFontClass} font-bold ${contrastText}`}>
+          APG
         </h1>
         <button
           className={`px-4 ${smallButtonPadding} ${bgCard} ${bgCardHover} border ${contrastBorder} rounded text-blue-500 font-medium ${transitionClass} ${focusClass}`}
@@ -373,7 +373,7 @@ export default function Dashboard() {
                 <button
                   key={app.name}
                   onClick={() => setSelectedApp(app)}
-                  className={`${buttonPadding} ${isDark ? "bg-zinc-900" : "bg-gray-50"} border ${contrastBorder} rounded ${bgCardHover} ${transitionClass} text-left ${focusClass} ${
+                  className={`${buttonPadding} ${isDark ? "bg-slate-900" : "bg-slate-50"} border ${contrastBorder} rounded ${bgCardHover} ${transitionClass} text-left ${focusClass} ${
                     selectedApp?.name === app.name
                       ? "ring-2 ring-blue-500"
                       : ""
@@ -417,7 +417,7 @@ export default function Dashboard() {
           {/* Account Info */}
           <div className="flex items-center gap-3">
             <div
-              className={`w-10 h-10 rounded-full bg-gradient-to-br ${isDark ? "from-zinc-600 to-zinc-800" : "from-gray-400 to-gray-600"} border ${borderColor}`}
+              className={`w-10 h-10 rounded-full bg-gradient-to-br ${isDark ? "from-slate-600 to-slate-800" : "from-slate-400 to-slate-600"} border ${borderColor}`}
               aria-hidden="true"
             />
             <div>
@@ -444,7 +444,7 @@ export default function Dashboard() {
                 {selectedApp.importance && (
                   <div className="pt-2">
                     <span
-                      className={`text-xs text-yellow-500 ${isDark ? "bg-yellow-400/10" : "bg-yellow-100"} px-2 py-1 rounded`}
+                      className={`text-xs text-yellow-500 ${isDark ? "bg-yellow-500/10" : "bg-yellow-100"} px-2 py-1 rounded`}
                     >
                       * Important
                     </span>
@@ -464,7 +464,7 @@ export default function Dashboard() {
                 <p className="mb-4">
                   descriptions of selected app before allowing you to access the application
                 </p>
-                <p className={`text-xs ${isDark ? "text-zinc-600" : "text-gray-400"}`}>
+                <p className={`text-xs ${isDark ? "text-slate-600" : "text-slate-400"}`}>
                   (only shows up when app is not part of your pinned application)
                 </p>
               </div>
@@ -503,19 +503,19 @@ export default function Dashboard() {
             <div className="p-4 space-y-3">
               <div className="flex items-center justify-between">
                 <span className={textSecondary}>Open search</span>
-                <kbd className={`px-2 py-1 ${isDark ? "bg-zinc-700" : "bg-gray-200"} rounded text-xs font-mono`}>
+                <kbd className={`px-2 py-1 ${isDark ? "bg-slate-700" : "bg-slate-200"} rounded text-xs font-mono`}>
                   Ctrl + K
                 </kbd>
               </div>
               <div className="flex items-center justify-between">
                 <span className={textSecondary}>Close dialogs</span>
-                <kbd className={`px-2 py-1 ${isDark ? "bg-zinc-700" : "bg-gray-200"} rounded text-xs font-mono`}>
+                <kbd className={`px-2 py-1 ${isDark ? "bg-slate-700" : "bg-slate-200"} rounded text-xs font-mono`}>
                   Esc
                 </kbd>
               </div>
               <div className="flex items-center justify-between">
                 <span className={textSecondary}>Show shortcuts</span>
-                <kbd className={`px-2 py-1 ${isDark ? "bg-zinc-700" : "bg-gray-200"} rounded text-xs font-mono`}>
+                <kbd className={`px-2 py-1 ${isDark ? "bg-slate-700" : "bg-slate-200"} rounded text-xs font-mono`}>
                   ?
                 </kbd>
               </div>

@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Application Dashboard',
-  description: 'Dashboard for managing and accessing applications',
+  title: 'APG',
+  description: 'APG - Platform for managing and accessing applications',
   generator: 'v0.app',
   icons: {
     icon: [
