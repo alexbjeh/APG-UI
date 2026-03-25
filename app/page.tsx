@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { ChevronUp, ChevronDown, Search, Keyboard } from "lucide-react"
 import {
   AccessibilitySettings,
@@ -14,6 +15,7 @@ interface Application {
   function: string
   importance: boolean
   color: string
+  icon?: string
 }
 
 const applications: Application[] = [
@@ -23,6 +25,7 @@ const applications: Application[] = [
     function: "Data Processing / Orchestration",
     importance: false,
     color: "text-green-500",
+    icon: "/icons/unity.png",
   },
   {
     name: "Accumulo",
@@ -30,6 +33,7 @@ const applications: Application[] = [
     function: "Storage, Discovery, Configuration",
     importance: false,
     color: "text-zinc-300 dark:text-zinc-300",
+    icon: "/icons/accumulo.png",
   },
   {
     name: "Admin Portal",
@@ -37,6 +41,7 @@ const applications: Application[] = [
     function: "Platform Management",
     importance: false,
     color: "text-yellow-500",
+    icon: "/icons/admin.png",
   },
   {
     name: "Airflow",
@@ -44,6 +49,7 @@ const applications: Application[] = [
     function: "Data Processing / Orchestration",
     importance: true,
     color: "text-fuchsia-500",
+    icon: "/icons/airflow.png",
   },
   {
     name: "Consul",
@@ -52,6 +58,7 @@ const applications: Application[] = [
     function: "Storage, Discovery, Configuration",
     importance: false,
     color: "text-cyan-500",
+    icon: "/icons/consul.png",
   },
   {
     name: "Documentation Portal",
@@ -74,6 +81,7 @@ const applications: Application[] = [
     function: "Monitoring, Logging, Observability, Analysis",
     importance: true,
     color: "text-pink-500",
+    icon: "/icons/kibana.png",
   },
   {
     name: "Nagios",
@@ -81,6 +89,7 @@ const applications: Application[] = [
     function: "Monitoring, Logging, Observability, Analysis",
     importance: false,
     color: "text-blue-500",
+    icon: "/icons/nagios.png",
   },
   {
     name: "NiFi",
@@ -88,6 +97,7 @@ const applications: Application[] = [
     function: "Data Processing / Orchestration",
     importance: true,
     color: "text-red-500",
+    icon: "/icons/nifi.png",
   },
   {
     name: "NiFi Registry",
@@ -95,6 +105,7 @@ const applications: Application[] = [
     function: "Monitoring, Logging, Observability, Analysis",
     importance: false,
     color: "text-violet-500",
+    icon: "/icons/nifi-registry.png",
   },
   {
     name: "Prometheus",
@@ -109,6 +120,7 @@ const applications: Application[] = [
     function: "Platform Management",
     importance: false,
     color: "text-teal-500",
+    icon: "/icons/rda-deployer.png",
   },
   {
     name: "Spark History Server",
@@ -116,6 +128,7 @@ const applications: Application[] = [
     function: "Data Processing / Orchestration",
     importance: false,
     color: "text-emerald-500",
+    icon: "/icons/spark.png",
   },
 ]
 
@@ -327,10 +340,19 @@ export default function Dashboard() {
                   )}
                   <button
                     onClick={() => unpinApp(app)}
-                    className={`w-full text-left ${focusClass}`}
+                    className={`w-full text-left flex items-center gap-2 ${focusClass}`}
                     title={`Click to unpin ${app.name}`}
                     aria-label={`Unpin ${app.name}`}
                   >
+                    {app.icon && (
+                      <Image
+                        src={app.icon}
+                        alt={`${app.name} icon`}
+                        width={20}
+                        height={20}
+                        className="rounded flex-shrink-0"
+                      />
+                    )}
                     <span className={`font-medium ${app.color}`}>{app.name}</span>
                     {options.screenReaderMode && (
                       <span className="sr-only"> - {app.description}</span>
@@ -381,12 +403,23 @@ export default function Dashboard() {
                   role="listitem"
                   aria-pressed={selectedApp?.name === app.name}
                 >
-                  <span className={`font-medium ${app.color}`}>{app.name}</span>
-                  {app.importance && (
-                    <span className="ml-2 text-yellow-500" aria-label="Important">
-                      *
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {app.icon && (
+                      <Image
+                        src={app.icon}
+                        alt={`${app.name} icon`}
+                        width={24}
+                        height={24}
+                        className="rounded flex-shrink-0"
+                      />
+                    )}
+                    <span className={`font-medium ${app.color}`}>{app.name}</span>
+                    {app.importance && (
+                      <span className="ml-1 text-yellow-500" aria-label="Important">
+                        *
+                      </span>
+                    )}
+                  </div>
                   {options.screenReaderMode && (
                     <span className="sr-only"> - {app.function}</span>
                   )}
@@ -435,7 +468,18 @@ export default function Dashboard() {
           >
             {selectedApp ? (
               <div className="space-y-3">
-                <h4 className={`font-semibold ${selectedApp.color}`}>{selectedApp.name}</h4>
+                <div className="flex items-center gap-3">
+                  {selectedApp.icon && (
+                    <Image
+                      src={selectedApp.icon}
+                      alt={`${selectedApp.name} icon`}
+                      width={40}
+                      height={40}
+                      className="rounded"
+                    />
+                  )}
+                  <h4 className={`font-semibold ${selectedApp.color}`}>{selectedApp.name}</h4>
+                </div>
                 <p className={textSecondary}>{selectedApp.description}</p>
                 <div className={`pt-2 border-t ${borderColor}`}>
                   <p className={`text-xs ${textMuted}`}>Function:</p>
