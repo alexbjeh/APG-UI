@@ -267,7 +267,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
-            className={`px-4 ${smallButtonPadding} ${bgCard} ${bgCardHover} border ${contrastBorder} rounded text-green-500 font-medium ${transitionClass} ${focusClass}`}
+            className={`px-4 ${smallButtonPadding} ${bgCard} ${bgCardHover} border ${contrastBorder} rounded text-white font-medium ${transitionClass} ${focusClass}`}
             aria-label="Toggle search"
             aria-expanded={searchOpen}
           >
@@ -282,11 +282,11 @@ export default function Dashboard() {
             <Keyboard className="w-4 h-4" />
           </button>
         </div>
-        <h1 className={`${headingFontClass} font-bold text-red-800 dark:text-red-700`}>
+        <h1 className={`${headingFontClass} font-bold text-red-950 dark:text-red-900`}>
           APG
         </h1>
         <button
-          className={`px-4 ${smallButtonPadding} ${bgCard} ${bgCardHover} border ${contrastBorder} rounded text-blue-500 font-medium ${transitionClass} ${focusClass}`}
+          className={`px-4 ${smallButtonPadding} ${bgCard} ${bgCardHover} border ${contrastBorder} rounded text-white font-medium ${transitionClass} ${focusClass}`}
         >
           branch categories
         </button>
