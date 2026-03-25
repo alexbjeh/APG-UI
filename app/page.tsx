@@ -321,8 +321,8 @@ export default function Dashboard() {
           aria-label="Pinned applications"
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className={`${baseFontClass} font-semibold ${textSecondary} underline`}>
-              ~Pinned Applications~
+            <h2 className={`${baseFontClass} font-semibold ${textSecondary}`}>
+              PINNED APPLICATIONS
             </h2>
           </div>
           <nav aria-label="Pinned applications list">
@@ -480,7 +480,7 @@ export default function Dashboard() {
                       className="rounded"
                     />
                   )}
-                  <h4 className={`font-semibold ${selectedApp.color}`}>{selectedApp.name}</h4>
+                  <h4 className="font-semibold text-white">{selectedApp.name}</h4>
                 </div>
                 <p className={textSecondary}>{selectedApp.description}</p>
                 <div className={`pt-2 border-t ${borderColor}`}>
