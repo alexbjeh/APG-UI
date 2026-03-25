@@ -66,6 +66,7 @@ const applications: Application[] = [
     function: "Platform Management",
     importance: true,
     color: "text-orange-500",
+    icon: "/icons/docs.png",
   },
   {
     name: "Grafana",
@@ -74,6 +75,7 @@ const applications: Application[] = [
     function: "Monitoring, Logging, Observability, Analysis",
     importance: true,
     color: "text-lime-500",
+    icon: "/icons/grafana.png",
   },
   {
     name: "Kibana",
@@ -113,6 +115,7 @@ const applications: Application[] = [
     function: "Monitoring, Logging, Observability, Analysis",
     importance: true,
     color: "text-amber-500",
+    icon: "/icons/prometheus.svg",
   },
   {
     name: "RDA Deployer",
@@ -340,7 +343,7 @@ export default function Dashboard() {
                   )}
                   <button
                     onClick={() => unpinApp(app)}
-                    className={`w-full text-left flex items-center gap-2 ${focusClass}`}
+                    className={`w-full text-left flex items-center gap-3 ${focusClass}`}
                     title={`Click to unpin ${app.name}`}
                     aria-label={`Unpin ${app.name}`}
                   >
@@ -348,12 +351,12 @@ export default function Dashboard() {
                       <Image
                         src={app.icon}
                         alt={`${app.name} icon`}
-                        width={20}
-                        height={20}
+                        width={28}
+                        height={28}
                         className="rounded flex-shrink-0"
                       />
                     )}
-                    <span className={`font-medium ${app.color}`}>{app.name}</span>
+                    <span className={`font-medium ${app.color} text-sm truncate`}>{app.name}</span>
                     {options.screenReaderMode && (
                       <span className="sr-only"> - {app.description}</span>
                     )}
@@ -387,7 +390,7 @@ export default function Dashboard() {
               )}
             </h3>
             <div
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
+              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
               role="list"
               aria-label="Available applications"
             >
@@ -395,33 +398,32 @@ export default function Dashboard() {
                 <button
                   key={app.name}
                   onClick={() => setSelectedApp(app)}
-                  className={`${buttonPadding} ${isDark ? "bg-slate-900" : "bg-slate-50"} border ${contrastBorder} rounded ${bgCardHover} ${transitionClass} text-left ${focusClass} ${
+                  className={`${buttonPadding} ${isDark ? "bg-slate-900" : "bg-slate-50"} border ${contrastBorder} rounded-lg ${bgCardHover} ${transitionClass} flex flex-col items-center justify-center aspect-square ${focusClass} ${
                     selectedApp?.name === app.name
                       ? "ring-2 ring-blue-500"
                       : ""
                   }`}
                   role="listitem"
                   aria-pressed={selectedApp?.name === app.name}
+                  aria-label={`${app.name}${app.importance ? " - Important" : ""}`}
+                  title={app.name}
                 >
-                  <div className="flex items-center gap-2">
-                    {app.icon && (
-                      <Image
-                        src={app.icon}
-                        alt={`${app.name} icon`}
-                        width={24}
-                        height={24}
-                        className="rounded flex-shrink-0"
-                      />
-                    )}
-                    <span className={`font-medium ${app.color}`}>{app.name}</span>
-                    {app.importance && (
-                      <span className="ml-1 text-yellow-500" aria-label="Important">
-                        *
-                      </span>
-                    )}
-                  </div>
+                  {app.icon && (
+                    <Image
+                      src={app.icon}
+                      alt={`${app.name} icon`}
+                      width={48}
+                      height={48}
+                      className="rounded"
+                    />
+                  )}
+                  {app.importance && (
+                    <span className="absolute top-1 right-1 text-yellow-500 text-xs" aria-hidden="true">
+                      *
+                    </span>
+                  )}
                   {options.screenReaderMode && (
-                    <span className="sr-only"> - {app.function}</span>
+                    <span className="sr-only">{app.name} - {app.function}</span>
                   )}
                 </button>
               ))}
