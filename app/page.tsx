@@ -282,7 +282,7 @@ export default function Dashboard() {
             <Keyboard className="w-4 h-4" />
           </button>
         </div>
-        <h1 className={`${headingFontClass} font-bold ${contrastText}`}>
+        <h1 className={`${headingFontClass} font-bold text-red-800 dark:text-red-700`}>
           APG
         </h1>
         <button
@@ -356,7 +356,7 @@ export default function Dashboard() {
                         className="rounded flex-shrink-0"
                       />
                     )}
-                    <span className={`font-medium ${app.color} text-sm truncate`}>{app.name}</span>
+                    <span className="font-medium text-white text-sm truncate">{app.name}</span>
                     {options.screenReaderMode && (
                       <span className="sr-only"> - {app.description}</span>
                     )}
